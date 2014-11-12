@@ -18,9 +18,10 @@
     <!-- Custom styles for this template -->
     <link href="/static/css/custom-template.css" rel="stylesheet">   
 
-    <script src="/static/js/bootstrap.min.js"></script>
+   
     <script src="/static/js/jquery.js"></script>
-    <script src="/static/js/jquery.loadTemplate-1.4.4.min.js"></script>
+     <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/jquery.loadTemplate.js"></script>
   
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
@@ -33,6 +34,30 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 
     <![endif]-->
+    
+    <script type="text/html" id="quoteTemplate">
+	<h1>
+    	<span data-content="quote"></span>
+		<span data-content="currency"></span>
+    	<span data-content="trend" data-class="trendCssClass" ></span>
+	</h1>
+	</script>
+    
+    <script type="text/javascript">
+     $(document).ready(function(){
+    	 data = {quote : 123, currency: 'Euro' , trend : 1.2};
+    	 var trendCssClass = 'bg-info';
+    	 if(data['trend'] > 0){
+    		 trendCssClass = 'bg-success';
+    	 }
+    	 if(data['trend'] < 0){
+    		 trendCssClass = 'bg-error';
+    	 }
+    	 data['trendCssClass'] = trendCssClass
+    	 $('#quote').loadTemplate($("#quoteTemplate"),data);
+     });
+    </script>
+    
   </head>
 
   <body  ng-controller="RepoListCtrl">
@@ -60,16 +85,23 @@
 
     <div class="container">
 
-      <div class="starter-template">
+   <div class="starter-template">
         <h1>Bootstrap starter template</h1>
         <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
       
 
     </div>
+    <div id="quote"  class="starter-template">
+    
+    </div>
+    
 
         
 
     </div><!-- /.container -->
+    
+    
+    
 
 
     

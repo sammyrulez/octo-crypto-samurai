@@ -6,6 +6,7 @@
          metadata-complete="true">
     <!-- In order to speed up web application startup, we've disabled scanning of WEB-INF/lib jars for Servlet 3.0
     specific annotations. If you wish to use these annotations, remove the 'metadata-complete' attribute. -->
+   
     <listener>
         <listener-class>spray.servlet.Initializer</listener-class>
     </listener>
@@ -18,4 +19,5 @@
         <servlet-name>SprayConnectorServlet</servlet-name>
         <url-pattern>/api/*</url-pattern>
     </servlet-mapping>
+     
 </web-app>

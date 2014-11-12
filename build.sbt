@@ -10,7 +10,7 @@ seq(lessSettings:_*)
 
 (LessKeys.filter in (Compile, LessKeys.less)) := "bootstrap.less"
 
-(resourceManaged in (Compile, LessKeys.less)) <<= (target in Compile)(_ / "webapp" / "css")
+(resourceManaged in (Compile, LessKeys.less)) <<= (target in Compile)(_ / "webapp" / "static" / "css")
 
 seq(jasmineSettings : _*)
 
