@@ -30,13 +30,9 @@ libraryDependencies += "com.typesafe.akka" % "akka-actor_2.10" % "2.3.6"
 
 libraryDependencies += "io.spray" % "spray-servlet_2.10" % "1.3.2"
 
-libraryDependencies += "org.apache.maven" % "maven-model" % "3.0.4"
-
-libraryDependencies += "org.apache.maven" % "maven-core" % "3.0.4"
-
-libraryDependencies += "org.codehaus.plexus" % "plexus-utils" % "2.0.6"
-
 libraryDependencies += "org.scalatest" % "scalatest_2.10" % "2.1.3" % "test"
+
+libraryDependencies += "junit" % "junit" % "4.11" % "test"
 
 libraryDependencies += "com.typesafe.akka" % "akka-testkit_2.10" % "2.3.6" % "test"
 
