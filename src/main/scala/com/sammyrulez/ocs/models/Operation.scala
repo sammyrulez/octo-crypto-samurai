@@ -1,14 +1,20 @@
 package com.sammyrulez.ocs.models
 
+import java.util.Date
+
 trait Operation {
   
     def multipier:Integer 
     
     def value:Double
+    
+    val timestamp:Date
+    
+    val uid:String
 
 }
 
-class Deposit(coins:Double) extends Operation {
+class Deposit(coins:Double,val uid:String,val timestamp:Date = new Date()) extends Operation {
   
    def multipier:Integer = 1
       
@@ -16,7 +22,7 @@ class Deposit(coins:Double) extends Operation {
   
 }
 
-class Widthraw(coins:Double) extends Operation {
+class Widthraw(coins:Double,val uid:String,val timestamp:Date = new Date()) extends Operation {
   
    def multipier:Integer = -1
       
@@ -27,9 +33,9 @@ class Widthraw(coins:Double) extends Operation {
 
 object Operation {
   
-  def apply(coins:Double) = coins match{
-    case d : Double if (coins > 0) => new Deposit(coins)
-    case w : Double if (coins < 0)=> new Widthraw(coins)
+  def apply(coins:Double,uid:String,timestamp:Date = new Date()) = coins match{
+    case d : Double if (coins > 0) => new Deposit(coins,uid,timestamp)
+    case w : Double if (coins < 0)=> new Widthraw(coins,uid,timestamp)
     case _ => None
   }
   
