@@ -2,6 +2,14 @@ package com.sammyrulez.ocs.models
 
 import java.util.Date
 
+class User(val uid:String,val name:String )
+
+trait UserLoader {
+  
+  def load( uid:String):User
+  
+}
+
 trait Operation {
   
     def multipier:Integer 
@@ -11,6 +19,10 @@ trait Operation {
     val timestamp:Date
     
     val uid:String
+    
+    def user(implicit userLoader: UserLoader):User = {
+       userLoader.load(uid);
+    }
 
 }
 

@@ -4,6 +4,15 @@ import org.scalatest.junit.JUnitRunner
 import org.junit.runner.RunWith
 import java.util.Date
 
+
+class MockLoader extends UserLoader{
+  
+  def load(uid:String):User = {
+    return new User(uid,"I'm " + uid)
+  }
+  
+}
+
 @RunWith(classOf[JUnitRunner])
 class ModelTest  extends FlatSpec with Matchers {
 
@@ -32,5 +41,23 @@ class ModelTest  extends FlatSpec with Matchers {
     o.timestamp should be theSameInstanceAs t 
     
   }
+    
+  "An operation " should " have a user associated" in {
+    val  o = new Deposit(123,"x")
+    o.uid should be ("x")
+    
+  }  
+  
+   "An operation " should " load his user " in {
+     implicit val mockLoader = new MockLoader()
+     
+     val  o = new Deposit(123,"x")
+     o.user.uid  should be ("x")
+    
+    
+  }  
+  
+  
+    
 
 }
