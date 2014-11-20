@@ -4,32 +4,38 @@ import scala.concurrent.duration._
 import akka.io.Tcp
 import akka.actor._
 import spray.http._
+import spray.routing._
 import MediaTypes._
 import HttpMethods._
+import spray.json._
+import spray.routing.directives.LogEntry
+import akka.event.Logging._
 
 
-class WebService extends Actor with ActorLogging {
-  def receive = {
-    case HttpRequest(GET, Uri.Path("/api/"), _, _, _) =>
-      sender ! index
-    case HttpRequest(GET, Uri.Path("/api/ping"), _, _, _) =>
-      sender ! HttpResponse(entity = "PONG!")
-    case Timedout(request: HttpRequest) =>
-      sender ! HttpResponse(500, "The " + request.method + " request to '" + request.uri + "' has timed out...")
-  }
-  ////////////// helpers //////////////
-  lazy val index = HttpResponse(
-    entity = HttpEntity(`text/html`,
-      <html>
-        <body>
-          <h1>Say hello to <i>spray-servlet</i>!</h1>
-          <p>Defined resources:</p>
-          <ul>
-            <li><a href="/api/ping">/ping</a></li>
-          </ul>
-        </body>
-      </html>.toString
-    )
-  )
-
+object ChangeJsonProtocol extends DefaultJsonProtocol {
+  implicit val changeFormat = jsonFormat3(Change)
 }
+class WebService extends Actor with HttpService with ActorLogging {
+  implicit def actorRefFactory = context
+  def receive = runRoute(route)
+  import ChangeJsonProtocol._
+  import spray.httpx.SprayJsonSupport._
+  lazy val route = {
+                get {                    
+                    path("exchange") {                        
+                            complete{
+                            new Change(1,"euro",0.11)
+                            }                         
+                    } ~
+                    path("exchange" / Segment){(currency) =>
+                            complete{
+                            new Change(1,currency,0.11)
+                            }
+                         }                   
+                }
+      }
+    
+  
+}
+
+case class Change(value: Double, currency: String, trend: Double)

@@ -24,11 +24,21 @@ jasmineConfFile <+= sourceDirectory { src => src / "test" / "webapp" / "static" 
 
 jasmineEdition := 2
 
+resolvers += "SpringSource Milestone Repository" at "http://repo.springsource.org/milestone"
+
 libraryDependencies += "javax.servlet" % "servlet-api" % "2.5" % "provided"
 
 libraryDependencies += "com.typesafe.akka" % "akka-actor_2.10" % "2.3.6"
 
+libraryDependencies += "org.springframework.scala" % "spring-scala" % "1.0.0.M2"
+
 libraryDependencies += "io.spray" % "spray-servlet_2.10" % "1.3.2"
+
+libraryDependencies += "io.spray" % "spray-httpx_2.10" % "1.3.2"
+
+libraryDependencies += "io.spray" % "spray-routing_2.10" % "1.3.2"
+
+libraryDependencies += "io.spray" % "spray-json_2.10" % "1.3.1"
 
 libraryDependencies += "org.scalatest" % "scalatest_2.10" % "2.1.3" % "test"
 
