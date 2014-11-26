@@ -12,18 +12,6 @@ seq(lessSettings:_*)
 
 (resourceManaged in (Compile, LessKeys.less)) <<= (target in Compile)(_ / "webapp" / "static" / "css")
 
-seq(jasmineSettings : _*)
-
-appJsDir <+= sourceDirectory { src => src / "main" / "webapp" / "static" / "js" }
-
-appJsLibDir <+= sourceDirectory { src => src / "main" / "webapp" / "static" / "js" / "lib" }
-
-jasmineTestDir <+= sourceDirectory { src => src / "test" / "webapp" / "static" / "js" }
-
-jasmineConfFile <+= sourceDirectory { src => src / "test" / "webapp" / "static" / "js" / "test.dependencies.js" }
-
-jasmineEdition := 2
-
 resolvers += "SpringSource Milestone Repository" at "http://repo.springsource.org/milestone"
 
 libraryDependencies += "javax.servlet" % "servlet-api" % "2.5" % "provided"
@@ -47,4 +35,7 @@ libraryDependencies += "junit" % "junit" % "4.11" % "test"
 libraryDependencies += "com.typesafe.akka" % "akka-testkit_2.10" % "2.3.6" % "test"
 
 libraryDependencies += "org.mockito" % "mockito-all" % "1.10.8" % "test"
+
+libraryDependencies += "org.seleniumhq.selenium" % "selenium-java" % "2.44.0" % "test"
+
     
