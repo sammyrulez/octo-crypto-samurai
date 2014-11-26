@@ -10,7 +10,7 @@
     <link rel="icon" href="../../favicon.ico">
     -->
 
-    <title>Starter Template for Bootstrap</title>
+    <title>BitRyu</title>
 
     <!-- Bootstrap core CSS -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
@@ -20,8 +20,9 @@
 
    
     <script src="/static/js/lib/jquery.js"></script>
-     <script src="/static/js/lib/bootstrap.min.js"></script>
+    <script src="/static/js/lib/bootstrap.min.js"></script>
     <script src="/static/js/lib/jquery.loadTemplate.js"></script>
+    <script src="/static/js/index.js"></script>
   
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug 
@@ -37,9 +38,9 @@
     
     <script type="text/html" id="quoteTemplate">
 	<h1>
-    	<span data-content="quote"></span>
-		<span data-content="currency"></span>
-    	<span data-content="trend" data-class="trendCssClass" ></span>
+    	<span data-content="quote" id="quoteValue"></span>
+		<span data-content="currency" id="currencyRef"></span>
+    	<span data-content="trend" data-class="trendCssClass" id="trendPercentage" ></span>
 	</h1>
 	</script>
     
