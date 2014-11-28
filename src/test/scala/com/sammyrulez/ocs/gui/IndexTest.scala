@@ -5,7 +5,7 @@ import org.scalatest.selenium.HtmlUnit
 
 class IndexSpec extends FlatSpec with ShouldMatchers with Firefox {
 
-  val host = "http://localhost:8080/"
+  val host = "http://localhost:9090/"
 
    "The app home page" should "have the correct title" in {
     go to (host + "index.html")
