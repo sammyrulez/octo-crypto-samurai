@@ -17,11 +17,14 @@ resolvers += "SpringSource Milestone Repository" at "http://repo.springsource.or
 libraryDependencies ++= Seq(
         "org.scalatra" %% "scalatra" % "2.3.0",
         "org.scalatra" %% "scalatra-scalate" % "2.3.0",
+        "org.scalatra" %% "scalatra-auth" % "2.3.0"
         "org.scalatra" %% "scalatra-scalatest" % "2.3.0" % "test",
         "ch.qos.logback" % "logback-classic" % "1.1.2" % "runtime",
         "org.eclipse.jetty" % "jetty-webapp" % "9.2.1.v20140609" % "container",
         "javax.servlet" % "javax.servlet-api" % "3.1.0" % "provided",
         "org.springframework.scala" % "spring-scala" % "1.0.0.M2",
+        "org.scalatra" %% "scalatra-json" % "2.3.0",
+        "org.json4s"   %% "json4s-jackson" % "3.2.9",
         "com.typesafe.akka" % "akka-actor_2.10" % "2.3.6",
         "com.typesafe.akka" % "akka-testkit_2.10" % "2.3.6" % "test",
         "org.scalatest" % "scalatest_2.10" % "2.1.3" % "test",
